@@ -1,24 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import mainRoutes from "routes/mainRoutes";
+import { Switch, Route, Redirect } from "react-router-dom";
+import useAuth from "hooks/auth/useAuth";
 
 function App() {
+  const { user } = useAuth();
+  const { guestRoute, userRoute } = mainRoutes;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Suspense fallback={<div>LOADING...</div>}>
+        {user ? (
+          <Switch>
+            {userRoute.routes.map((route: any, idx: number) => {
+              return (
+                route.component && (
+                  <Route
+                    key={idx}
+                    path={route.path}
+                    exact={true}
+                    render={(props) => <route.component {...props} />}
+                  />
+                )
+              );
+            })}
+            <Route path="*">
+              <Redirect to={userRoute.redirect.path}></Redirect>
+            </Route>
+          </Switch>
+        ) : (
+          <>
+            <Switch>
+              {guestRoute.routes.map((route: any, idx: number) => {
+                return (
+                  route.component && (
+                    <Route
+                      key={idx}
+                      path={route.path}
+                      exact={true}
+                      render={(props) => <route.component {...props} />}
+                    />
+                  )
+                );
+              })}
+              <Route path="*">
+                <Redirect to={guestRoute.redirect.path}></Redirect>
+              </Route>
+            </Switch>
+          </>
+        )}
+      </Suspense>
     </div>
   );
 }
