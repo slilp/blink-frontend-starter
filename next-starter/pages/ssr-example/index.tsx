@@ -3,6 +3,7 @@ import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
 } from "next";
+import { getSession } from "next-auth/react";
 
 interface HomeProps {
   title: string;
@@ -25,6 +26,19 @@ function Home({ title, randomNumber }: HomeProps) {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<HomeProps>> => {
+  const { req } = context;
+  const session = await getSession({ req });
+  console.log(JSON.stringify(session));
+
+  if (!session || session?.error === "RefreshAccessTokenError") {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/api/auth/signin",
+      },
+    };
+  }
+
   return {
     props: {
       title: "HELLO WORLD NEXT.JS ",

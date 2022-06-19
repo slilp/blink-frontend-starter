@@ -3,6 +3,7 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from "next";
+import withAuthen from "../../auth/withAuth";
 
 interface HomeProps {
   title: string;
@@ -33,4 +34,4 @@ export const getStaticProps: GetStaticProps = async (
   };
 };
 
-export default Home;
+export default withAuthen(Home);
