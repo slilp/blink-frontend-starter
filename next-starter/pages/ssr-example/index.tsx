@@ -28,7 +28,6 @@ export const getServerSideProps: GetServerSideProps = async (
 ): Promise<GetServerSidePropsResult<HomeProps>> => {
   const { req } = context;
   const session = await getSession({ req });
-  console.log(JSON.stringify(session));
 
   if (!session || session?.error === "RefreshAccessTokenError") {
     return {

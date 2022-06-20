@@ -40,7 +40,7 @@ async function refreshAccessToken(token: any) {
 }
 
 export default NextAuth({
-  secret: "THIS_IS_MY_SECRET",
+  secret: "3a88306f-f4d0-478d-91be-7720c3a1daf7",
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -53,8 +53,8 @@ export default NextAuth({
         //you can call login api here
         const user = {
           id: 1,
-          name: "Slil Puangpoom",
-          email: "slil.puangpoom@gmail.com",
+          name: credentials?.username,
+          email: credentials?.username,
           accessToken:
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
           refreshToken:
@@ -73,7 +73,6 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account }: any) {
-      console.log(JSON.stringify(token));
       if (account && user) {
         return {
           accessToken: account.access_token,
