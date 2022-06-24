@@ -4,6 +4,8 @@ const Landing = lazy(() => import("pages/Landing"));
 const Login = lazy(() => import("pages/Login"));
 const Register = lazy(() => import("pages/Register"));
 const Home = lazy(() => import("pages/Home"));
+const Covid = lazy(() => import("pages/Covid"));
+const CovidWithThunk = lazy(() => import("pages/CovidWithThunk"));
 
 const routes = {
   landing: {
@@ -25,12 +27,26 @@ const routes = {
     path: "/",
     name: "Home",
     component: Home,
-    permission: "HOME",
+  },
+  covid: {
+    path: "/covid",
+    name: "Covid",
+    component: Covid,
+  },
+  covidWithThunk: {
+    path: "/covid-thunk",
+    name: "CovidWithThunk",
+    component: CovidWithThunk,
   },
 };
 
 const guestRoute = {
-  routes: [routes.login, routes.register, routes.landing],
+  routes: [
+    routes.login,
+    routes.register,
+    routes.landing,
+    routes.covidWithThunk,
+  ],
   redirect: {
     ...routes.login,
   },

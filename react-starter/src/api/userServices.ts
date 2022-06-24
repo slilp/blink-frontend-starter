@@ -1,5 +1,5 @@
-import request from "./publicRequest";
-import requestAuth from "./request";
+import request from "./requests/publicRequest";
+import requestAuth from "./requests/request";
 import { ILogin, IRegister, IUser, ILoginResponse } from "./types/UserTypes";
 
 export const login = async (req: ILogin): Promise<ILoginResponse> => {
