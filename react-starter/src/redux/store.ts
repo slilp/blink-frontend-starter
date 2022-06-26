@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import covidSlice from "./covid";
 import themeModeSlice from "./theme";
 
+export const reducer = {
+  themeMode: themeModeSlice,
+  covid: covidSlice,
+};
+
 export const store = configureStore({
-  reducer: {
-    themeMode: themeModeSlice,
-    covid: covidSlice,
-  },
+  reducer,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

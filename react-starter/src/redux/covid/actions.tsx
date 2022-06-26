@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getTodayCovidCase } from "api/covideService";
+import covidApi from "api/covidService";
 
 export const fetchTodayCovidCase = createAsyncThunk(
   "covid/fetchTodayCovidCase",
   async () => {
-    const response = await getTodayCovidCase();
+    const response = await covidApi.getTodayCovidCase();
     return response;
   }
 );
