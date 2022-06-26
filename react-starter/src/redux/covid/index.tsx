@@ -26,6 +26,7 @@ export const covidSlice = createSlice({
     });
     builder.addCase(fetchTodayCovidCase.rejected, (state, action) => {
       state.status = false;
+      state.today = [];
     });
   },
 });

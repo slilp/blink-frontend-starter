@@ -14,7 +14,7 @@ const CovidWithThunk = (props: CovidWithThunkProps) => {
 
   return (
     <div>
-      {covidData.today.length > 0 && (
+      {covidData.today?.length > 0 && (
         <h1 data-testid="new-case">{covidData.today[0].new_case}</h1>
       )}
     </div>

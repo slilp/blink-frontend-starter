@@ -26,9 +26,9 @@ describe("CovidWithThunk page", () => {
         update_date: "2022-06-26 07:27:54",
       },
     ];
+    covidApi.getTodayCovidCase = jest.fn().mockResolvedValue(mockData);
 
     //when
-    covidApi.getTodayCovidCase = jest.fn().mockResolvedValue(mockData);
     const { store } = render(<CovidWithThunk />);
 
     //then
