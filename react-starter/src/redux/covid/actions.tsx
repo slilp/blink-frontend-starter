@@ -7,8 +7,8 @@ export const fetchTodayCovidCase = createAsyncThunk(
     try {
       const response = await covidApi.getTodayCovidCase();
       return response;
-    } catch (error) {
-      return [];
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error?.message);
     }
   }
 );
