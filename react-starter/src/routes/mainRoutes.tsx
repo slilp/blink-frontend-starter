@@ -45,6 +45,7 @@ const guestRoute = {
     routes.login,
     routes.register,
     routes.landing,
+    routes.covid,
     routes.covidWithThunk,
   ],
   redirect: {
