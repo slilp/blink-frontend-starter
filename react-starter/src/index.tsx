@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "redux/store";
+import { ThemeProvider } from "@emotion/react";
+import { lightTheme } from "@slil.pua/blink-ui";
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   require("./mocks/browser");
@@ -18,7 +20,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={lightTheme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

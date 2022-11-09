@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import mainRoutes from "routes/mainRoutes";
 import { Switch, Route, Redirect } from "react-router-dom";
 import useAuth from "hooks/auth/useAuth";
+import ResetCSS from "utils/ResetCSS";
 
 function App() {
   const { user } = useAuth();
@@ -10,6 +11,7 @@ function App() {
   return (
     <div>
       <Suspense fallback={<div>LOADING...</div>}>
+        <ResetCSS styles={{}} />
         {user ? (
           <Switch>
             {userRoute.routes.map((route: any, idx: number) => {

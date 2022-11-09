@@ -6,6 +6,7 @@ const Register = lazy(() => import("pages/Register"));
 const Home = lazy(() => import("pages/Home"));
 const Covid = lazy(() => import("pages/Covid"));
 const CovidWithThunk = lazy(() => import("pages/CovidWithThunk"));
+const MyUi = lazy(() => import("pages/MyUi"));
 
 const routes = {
   landing: {
@@ -28,6 +29,11 @@ const routes = {
     name: "Home",
     component: Home,
   },
+  myui: {
+    path: "/my-ui",
+    name: "My UI",
+    component: MyUi,
+  },
   covid: {
     path: "/covid",
     name: "Covid",
@@ -45,6 +51,7 @@ const guestRoute = {
     routes.login,
     routes.register,
     routes.landing,
+    routes.myui,
     routes.covid,
     routes.covidWithThunk,
   ],
