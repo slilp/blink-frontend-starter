@@ -10,37 +10,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import { useForm, Resolver, Controller, useFieldArray } from "react-hook-form";
 import * as yup from "yup";
-
-const useYupValidationResolver = (validationSchema: any) =>
-  useCallback(
-    async (data: any) => {
-      try {
-        const values = await validationSchema.validate(data, {
-          abortEarly: false,
-        });
-
-        return {
-          values,
-          errors: {},
-        };
-      } catch (errors: any) {
-        return {
-          values: {},
-          errors: errors.inner.reduce(
-            (allErrors: any, currentError: any) => ({
-              ...allErrors,
-              [currentError.path]: {
-                type: currentError.type ?? "validation",
-                message: currentError.message,
-              },
-            }),
-            {}
-          ),
-        };
-      }
-    },
-    [validationSchema]
-  );
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type FormValues = {
   name: string;
@@ -59,16 +29,12 @@ const validationSchema = yup.object({
   name: yup.string().required("Name Required"),
   type: yup.string().required("Type Required"),
   choice: yup.string().required("Choice Required"),
-  collection: yup
-    .array()
-    .of(yup.object().shape(formSchema))
-    .required("Must have fields")
-    .min(1, "Minimum of 1 field"),
+  collection: yup.array().of(yup.object().shape(formSchema)),
+  // .required("Must have fields")
+  // .min(1, "Minimum of 1 field"),
 });
 
 function MultiForm() {
-  const resolver: Resolver<FormValues> =
-    useYupValidationResolver(validationSchema);
   const {
     handleSubmit,
     register,
@@ -76,7 +42,7 @@ function MultiForm() {
     control,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ resolver });
+  } = useForm<FormValues>({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = handleSubmit((data: FormValues) => console.log(data));
 
@@ -98,12 +64,13 @@ function MultiForm() {
       ],
     });
   }, []);
+  {
+    console.log(errors);
+  }
 
   return (
     <Container sx={{ padding: "1rem" }}>
       <form onSubmit={onSubmit}>
-        {JSON.stringify(watch())}
-        {JSON.stringify(errors)}
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <TextField {...register("name")} />
@@ -186,7 +153,7 @@ function MultiForm() {
         {fields.map((field, index) => {
           return (
             <div key={field.id}>
-              <section className={"section"} key={field.id}>
+              <section className={"section"}>
                 <TextField {...register(`collection.${index}.name` as const)} />
                 <button type="button" onClick={() => remove(index)}>
                   DELETE
