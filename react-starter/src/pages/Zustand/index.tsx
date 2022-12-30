@@ -24,7 +24,7 @@ function Zustand() {
       <h1 data-testid="oneUpText">{count}</h1>{" "}
       <Link to="/login">Change page</Link>
       <button onClick={inc2}>500 up</button>
-      {count2}
+      <h1 data-testid="twoUpText">{count2}</h1>
     </div>
   );
 }

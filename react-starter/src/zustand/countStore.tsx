@@ -1,6 +1,6 @@
 import create from "zustand";
 
-type State = {
+export type State = {
   count: number;
   count2: number;
 };
