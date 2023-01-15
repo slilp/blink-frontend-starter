@@ -5,7 +5,7 @@ import { EIP1193 } from "@web3-react/eip1193";
 import { URLS } from "./chains";
 
 class Eip1193BridgeWithoutAccounts extends Eip1193Bridge {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line
   request(request: { method: string; params?: any[] }): Promise<any> {
     if (
       request.method === "eth_requestAccounts" ||
