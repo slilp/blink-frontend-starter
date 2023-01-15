@@ -10,7 +10,7 @@ function Home() {
   return (
     <div>
       <main className="mx-auto container p-10 ">
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-wrap">
           <MetaMaskCard />
           <WalletConnectCard />
           <NetworkCard />
