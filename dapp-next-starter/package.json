@@ -17,6 +17,8 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
+    "@walletconnect/ethereum-provider": "^2.2.1",
+    "@walletconnect/jsonrpc-provider": "^1.0.6",
     "@web3-react/core": "8.0.35-beta.0",
     "@web3-react/eip1193": "8.0.26-beta.0",
     "@web3-react/empty": "8.0.20-beta.0",
