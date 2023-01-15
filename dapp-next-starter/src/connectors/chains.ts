@@ -56,8 +56,8 @@ export const CHAINS: {
 } = {
   1: {
     urls: [
-      process.env.infuraKey
-        ? `https://mainnet.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       process.env.alchemyKey
         ? `https://eth-mainnet.alchemyapi.io/v2/${process.env.alchemyKey}`
@@ -68,32 +68,32 @@ export const CHAINS: {
   },
   3: {
     urls: [
-      process.env.infuraKey
-        ? `https://ropsten.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://ropsten.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
     ].filter((url) => url !== ""),
     name: "Ropsten",
   },
   4: {
     urls: [
-      process.env.infuraKey
-        ? `https://rinkeby.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://rinkeby.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
     ].filter((url) => url !== ""),
     name: "Rinkeby",
   },
   5: {
     urls: [
-      process.env.infuraKey
-        ? `https://goerli.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://goerli.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
     ].filter((url) => url !== ""),
     name: "Görli",
   },
   42: {
     urls: [
-      process.env.infuraKey
-        ? `https://kovan.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://kovan.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
     ].filter((url) => url !== ""),
     name: "Kovan",
@@ -101,8 +101,8 @@ export const CHAINS: {
   // Optimism
   10: {
     urls: [
-      process.env.infuraKey
-        ? `https://optimism-mainnet.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://optimism-mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       "https://mainnet.optimism.io",
     ].filter((url) => url !== ""),
@@ -112,8 +112,8 @@ export const CHAINS: {
   },
   69: {
     urls: [
-      process.env.infuraKey
-        ? `https://optimism-kovan.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://optimism-kovan.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       "https://kovan.optimism.io",
     ].filter((url) => url !== ""),
@@ -124,8 +124,8 @@ export const CHAINS: {
   // Arbitrum
   42161: {
     urls: [
-      process.env.infuraKey
-        ? `https://arbitrum-mainnet.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://arbitrum-mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       "https://arb1.arbitrum.io/rpc",
     ].filter((url) => url !== ""),
@@ -135,8 +135,8 @@ export const CHAINS: {
   },
   421611: {
     urls: [
-      process.env.infuraKey
-        ? `https://arbitrum-rinkeby.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://arbitrum-rinkeby.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       "https://rinkeby.arbitrum.io/rpc",
     ].filter((url) => url !== ""),
@@ -147,8 +147,8 @@ export const CHAINS: {
   // Polygon
   137: {
     urls: [
-      process.env.infuraKey
-        ? `https://polygon-mainnet.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://polygon-mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
       "https://polygon-rpc.com",
     ].filter((url) => url !== ""),
@@ -158,8 +158,8 @@ export const CHAINS: {
   },
   80001: {
     urls: [
-      process.env.infuraKey
-        ? `https://polygon-mumbai.infura.io/v3/${process.env.infuraKey}`
+      process.env.NEXT_PUBLIC_INFURA_KEY
+        ? `https://polygon-mumbai.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_KEY}`
         : "",
     ].filter((url) => url !== ""),
     name: "Polygon Mumbai",
