@@ -8,6 +8,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import theme from "../theme/theme";
 import createEmotionCache from "../theme/createEmotionCache";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -23,6 +25,14 @@ function MyApp(props: MyAppProps) {
     pageProps: { session, ...pageProps },
   } = props;
 
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60,
+      },
+    },
+  });
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -30,9 +40,12 @@ function MyApp(props: MyAppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <SessionProvider session={session} basePath="/api/auth">
-          <Component {...pageProps} />
-        </SessionProvider>
+        <QueryClientProvider client={client}>
+          <SessionProvider session={session} basePath="/api/auth">
+            <Component {...pageProps} />
+          </SessionProvider>
+          <ReactQueryDevtools />
+        </QueryClientProvider>
       </ThemeProvider>
     </CacheProvider>
   );
