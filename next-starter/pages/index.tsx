@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -18,6 +18,7 @@ const Home: NextPage = () => {
           overflowWrap: "break-word",
         }}
       >
+        {session && <button onClick={() => signOut()}>Logout</button>}
         <h1>{JSON.stringify(session)}</h1>
       </section>
     </div>
