@@ -51,6 +51,7 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
         //you can call login api here
+        console.log(credentials);
         const user = {
           id: 1,
           name: credentials?.username,
@@ -73,6 +74,9 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, user, account }: any) {
+      console.log("token-jwt", token);
+      console.log("user-jwt", user);
+      console.log("account-jwt", account);
       if (account && user) {
         return {
           accessToken: account.access_token,
@@ -91,6 +95,8 @@ export default NextAuth({
       return refreshAccessToken(token);
     },
     async session({ session, token }) {
+      console.log("token-session", token);
+      console.log("session-session", session);
       session.user = token.user as any;
       session.accessToken = token.accessToken;
       session.error = token.error;
