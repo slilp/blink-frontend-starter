@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+/***** This code is correct up to next-auth 4.18.10 */
+
 /**
  * Takes a token, and returns a new token with updated
  * `accessToken` and `accessTokenExpires`. If an error occurs,
@@ -53,7 +55,7 @@ export default NextAuth({
         //you can call login api here
         console.log(credentials);
         const user = {
-          id: 1,
+          id: "1",
           name: credentials?.username,
           email: credentials?.username,
           accessToken:
@@ -98,8 +100,8 @@ export default NextAuth({
       console.log("token-session", token);
       console.log("session-session", session);
       session.user = token.user as any;
-      session.accessToken = token.accessToken;
-      session.error = token.error;
+      // session.accessToken = token.accessToken;
+      // session.error = token.error;
 
       return session;
     },
