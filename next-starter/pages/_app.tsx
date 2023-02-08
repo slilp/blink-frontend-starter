@@ -28,7 +28,7 @@ function MyApp(props: MyAppProps) {
   const client = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 1000 * 60,
+        // staleTime: 1000 * 60,
       },
     },
   });
